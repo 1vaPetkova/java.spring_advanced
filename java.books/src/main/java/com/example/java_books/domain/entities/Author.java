@@ -1,6 +1,7 @@
 package com.example.java_books.domain.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,6 +12,7 @@ public class Author extends BaseEntity {
     private Set<Book> books;
 
     public Author() {
+        this.books = new HashSet<>();
     }
 
     public String getName() {

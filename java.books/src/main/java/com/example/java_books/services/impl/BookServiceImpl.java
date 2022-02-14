@@ -1,5 +1,6 @@
 package com.example.java_books.services.impl;
 
+import com.example.java_books.domain.dto.AuthorDto;
 import com.example.java_books.domain.dto.BookDto;
 import com.example.java_books.domain.entities.Book;
 import com.example.java_books.repositories.BookRepository;
@@ -28,5 +29,12 @@ public class BookServiceImpl implements BookService {
                 .stream()
                 .map(book -> this.modelMapper.map(book, BookDto.class))
                 .collect(Collectors.toList());
+    }
+
+    private BookDto asBook(Book book) {
+        BookDto bookDto = this.modelMapper.map(book, BookDto.class);
+        AuthorDto authorDto = this.modelMapper.map(book.getAuthor(), AuthorDto.class);
+        bookDto.setAuthor(authorDto);
+        return bookDto;
     }
 }

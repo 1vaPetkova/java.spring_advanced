@@ -23,10 +23,10 @@ public class BooksInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (bookRepository.count() == 0 && authorRepository.count() == 0) {
+        if (this.bookRepository.count() == 0 && this.authorRepository.count() == 0) {
             initJovkov();
             initNikolaiHaitov();
-            initDimitarTalev();
+            initDimitarDimov();
             initElinPelin();
             initVazov();
         }
@@ -36,7 +36,7 @@ public class BooksInit implements CommandLineRunner {
         initAuthor("Николай Хайтов", "Диви Разкази");
     }
 
-    private void initDimitarTalev() {
+    private void initDimitarDimov() {
         initAuthor("Димитър Димов", "Тютюн");
     }
 
@@ -49,27 +49,27 @@ public class BooksInit implements CommandLineRunner {
     }
 
     private void initJovkov() {
-
         initAuthor("Йордан Йовков", "Старопланински легенди", "Чифликът край границата");
     }
 
     private void initAuthor(String authorName, String... books) {
-        Author author = new Author();
-        author.setName(authorName);
-        author = authorRepository.save(author);
+        Author author = new Author().setName(authorName);
+        author = this.authorRepository.save(author);
 
         Set<Book> allBooks = new HashSet<>();
 
         for (String book : books) {
-            Book aBook = new Book();
-            aBook.setAuthor(author);
-            aBook.setTitle(book);
-            aBook.setIsbn(UUID.randomUUID().toString());
+            Book aBook = new Book()
+                    .setAuthor(author)
+                    .setTitle(book)
+                    .setIsbn(UUID.randomUUID().toString());
             allBooks.add(aBook);
         }
 
         author.setBooks(allBooks);
 
-        bookRepository.saveAll(allBooks);
+        this.bookRepository.saveAll(allBooks);
     }
+
+
 }

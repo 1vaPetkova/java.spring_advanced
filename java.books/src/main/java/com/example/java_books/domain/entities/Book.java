@@ -35,7 +35,7 @@ public class Book extends BaseEntity {
         return this;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public Author getAuthor() {
         return author;
     }
