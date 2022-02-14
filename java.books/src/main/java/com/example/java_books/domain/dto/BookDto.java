@@ -3,11 +3,22 @@ package com.example.java_books.domain.dto;
 import com.example.java_books.domain.entities.Author;
 
 public class BookDto {
+
+    private Long id;
     private String title;
     private String isbn;
-    private Author author;
+    private AuthorDto author;
 
     public BookDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public BookDto setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getTitle() {
@@ -28,11 +39,11 @@ public class BookDto {
         return this;
     }
 
-    public Author getAuthor() {
+    public AuthorDto getAuthor() {
         return author;
     }
 
-    public BookDto setAuthor(Author author) {
+    public BookDto setAuthor(AuthorDto author) {
         this.author = author;
         return this;
     }
