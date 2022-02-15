@@ -8,5 +8,10 @@ import java.util.Optional;
 public interface BookService {
 
     List<BookDto> getAllBooks();
-   Optional< BookDto> getBookById(Long id);
+
+    Optional<BookDto> getBookById(Long id);
+
+    void deleteBookById(Long id);
+
+    Long createBook(BookDto bookDto);
 }
