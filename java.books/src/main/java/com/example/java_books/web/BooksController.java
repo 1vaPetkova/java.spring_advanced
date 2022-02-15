@@ -46,7 +46,7 @@ public class BooksController {
                 .build();
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<BookDto> create(@RequestBody BookDto bookDto,
                                           UriComponentsBuilder uriComponentsBuilder) {
         //http://localhost:8080/books/id
