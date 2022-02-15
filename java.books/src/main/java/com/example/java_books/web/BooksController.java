@@ -46,7 +46,15 @@ public class BooksController {
                 .build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<BookDto> update(@PathVariable("id") Long id, @RequestBody BookDto bookDto) {
+        //TODO
+        throw new UnsupportedOperationException("not implemented");
+    }
+
+
     @PostMapping
+
     public ResponseEntity<BookDto> create(@RequestBody BookDto bookDto,
                                           UriComponentsBuilder uriComponentsBuilder) {
         //http://localhost:8080/books/id
