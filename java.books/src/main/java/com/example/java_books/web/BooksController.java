@@ -34,7 +34,7 @@ public class BooksController {
             return ResponseEntity
                     .notFound()
                     .build();
-        } else{
+        } else {
             return ResponseEntity.ok(bookById.get());
         }
     }
