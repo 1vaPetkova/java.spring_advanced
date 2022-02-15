@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +30,13 @@ public class BookServiceImpl implements BookService {
                 .stream()
                 .map(book -> this.modelMapper.map(book, BookDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<BookDto> getBookById(Long id) {
+        return this.bookRepository
+                .findById(id)
+                .map(this::asBook);
     }
 
     private BookDto asBook(Book book) {
