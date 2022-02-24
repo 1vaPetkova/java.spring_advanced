@@ -9,6 +9,7 @@ public class OrderEntity {
     private Long id;
     private String name;
     private StudentEntity student;
+    private CourseEntity course;
 
     public OrderEntity() {
     }
@@ -40,6 +41,16 @@ public class OrderEntity {
 
     public OrderEntity setStudent(StudentEntity student) {
         this.student = student;
+        return this;
+    }
+
+    @ManyToOne
+    public CourseEntity getCourse() {
+        return course;
+    }
+
+    public OrderEntity setCourse(CourseEntity course) {
+        this.course = course;
         return this;
     }
 }
