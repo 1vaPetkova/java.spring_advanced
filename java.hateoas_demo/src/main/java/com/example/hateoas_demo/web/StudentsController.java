@@ -1,8 +1,9 @@
 package com.example.hateoas_demo.web;
 
 
-import com.example.hateoas_demo.mapping.StudentMapper;
+import com.example.hateoas_demo.model.dto.OrderDto;
 import com.example.hateoas_demo.model.dto.StudentDto;
+import com.example.hateoas_demo.model.entities.StudentEntity;
 import com.example.hateoas_demo.services.StudentService;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -37,6 +38,15 @@ public class StudentsController {
         return ResponseEntity.ok(CollectionModel.of(allStudents));
     }
 
+    @GetMapping("/{id}/orders")
+    public ResponseEntity<CollectionModel<EntityModel<OrderDto>>> getOrders(@PathVariable("id") Long studentId) {
+        List<OrderDto> ordersDto = this.studentService.getOrdersDto(studentId);
+        List<EntityModel<OrderDto>> orders = ordersDto
+                .stream()
+                .map(EntityModel::of).toList();
+        return ResponseEntity.ok(CollectionModel.of(orders));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<EntityModel<StudentDto>> getStudentsById(@PathVariable("id") Long studentId) {
         StudentDto student = this.studentService.findById(studentId);//todo
@@ -64,7 +74,11 @@ public class StudentsController {
                 .withRel("update");
         result.add(updateLink);
 
-        //todo orders
+        Link orderLink = linkTo(methodOn(StudentsController.class)
+                .getOrders(studentDto.getId()))
+                .withRel("orders");
+
+        result.add(orderLink);
 
         return result.toArray(new Link[0]);
     }

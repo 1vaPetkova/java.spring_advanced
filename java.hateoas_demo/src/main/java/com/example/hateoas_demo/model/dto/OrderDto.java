@@ -1,0 +1,38 @@
+package com.example.hateoas_demo.model.dto;
+
+public class OrderDto {
+
+    private Long id;
+    private Long studentId;
+    private Long courseId;
+
+    public OrderDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public OrderDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public OrderDto setStudentId(Long studentId) {
+        this.studentId = studentId;
+        return this;
+    }
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public OrderDto setCourseId(Long courseId) {
+        this.courseId = courseId;
+        return this;
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.hateoas_demo.mapping;
+package com.example.hateoas_demo.model.mapping;
 
 
 import com.example.hateoas_demo.model.dto.StudentDto;
