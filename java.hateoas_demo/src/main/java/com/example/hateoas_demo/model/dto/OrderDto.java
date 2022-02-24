@@ -1,5 +1,8 @@
 package com.example.hateoas_demo.model.dto;
 
+import org.springframework.hateoas.server.core.Relation;
+
+@Relation(collectionRelation = "orders")
 public class OrderDto {
 
     private Long id;
