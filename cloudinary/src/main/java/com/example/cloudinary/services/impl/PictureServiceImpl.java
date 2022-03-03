@@ -5,6 +5,8 @@ import com.example.cloudinary.repositories.PictureRepository;
 import com.example.cloudinary.services.PictureService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PictureServiceImpl implements PictureService {
 
@@ -17,5 +19,15 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public void addPicture(PictureEntity picture) {
         this.pictureRepository.save(picture);
+    }
+
+    @Override
+    public List<PictureEntity> findAllPictures() {
+        return this.pictureRepository.findAll();
+    }
+
+    @Override
+    public void deleteAllPicturesByPublicId(String publicId) {
+        this.pictureRepository.deleteAllByPublicId(publicId);
     }
 }
