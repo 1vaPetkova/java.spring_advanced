@@ -9,13 +9,19 @@ import java.util.Map;
 @Configuration
 public class AppConfig {
 
+    private final CloudinaryConfig cloudinaryConfig;
+
+    public AppConfig(CloudinaryConfig cloudinaryConfig) {
+        this.cloudinaryConfig = cloudinaryConfig;
+    }
+
     @Bean
     public Cloudinary cloudinary() {
         return new Cloudinary(
                 Map.of(
-                        "cloud_name", "",
-                        "api_key", "",
-                        "api_secret", ""
+                        "cloud_name", cloudinaryConfig.getCloudName(),
+                        "api_key", cloudinaryConfig.getApiKey(),
+                        "api_secret", cloudinaryConfig.getApiSecret()
                 )
         );
     }
